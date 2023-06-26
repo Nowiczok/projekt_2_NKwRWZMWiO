@@ -1,28 +1,31 @@
-graph = {
-    0: [1, 4, 6],
-    1: [2],
-    2: [3, 9],
-    3: [],
-    9: [],
-    4: [5],
-    5: [],
-    6: [8, 7],
-    8: [],
-    7: [],
-}
+import graph_parser
+graph, podnuza_list, stars = graph_parser.get_graph("input.txt")
 
-stars = {
-    0: [0],  #preprocessing
-    1: [0],
-    2: [5],
-    3: [4],
-    4: [2],
-    5: [1],
-    6: [4],
-    7: [5],
-    8: [4],
-    9: [3],
-}
+# graph = {
+#     0: [1, 4, 6],
+#     1: [2],
+#     2: [3, 9],
+#     3: [],
+#     9: [],
+#     4: [5],
+#     5: [],
+#     6: [8, 7],
+#     8: [],
+#     7: [],
+# }
+
+# stars = {
+#     0: [0],  #preprocessing
+#     1: [0],
+#     2: [5],
+#     3: [4],
+#     4: [2],
+#     5: [1],
+#     6: [4],
+#     7: [5],
+#     8: [4],
+#     9: [3],
+# }
 
 visitedList = []  # Usunięcie [[]] - niepotrzebnej pustej listy
 
@@ -42,9 +45,8 @@ def depthFirst(graph, currentVertex, visited):
             depthFirst(graph, vertex, visited.copy())  # Używanie visited.copy()
     visitedList.append(visited)
 
-depthFirst(graph, 0, [])
+depthFirst(graph, "szczyt" , [])
 
-podnuza_list = [7, 5, 3, 9]
 
 lista_sciez_podn = []
 
@@ -59,11 +61,11 @@ najmniejsze_listy = [element for element in lista_sciez_podn if len(element) == 
 
 nowa_lista = [[stars.get(vertex, vertex) for vertex in element] for element in najmniejsze_listy]
 
-nowa_lista_v2 = [sum(sublist, []) for sublist in nowa_lista]
+nowa_lista_v2 = [sum(sublist) for sublist in nowa_lista]
 
-sum_list = [sum(sublist) for sublist in nowa_lista_v2]
+#sum_list = [sum(sublist) for sublist in nowa_lista_v2]
 
-index_list = indeksy_najwiekszych_elementow(sum_list)
+index_list = indeksy_najwiekszych_elementow(nowa_lista_v2)
 
 
 print(visitedList)
@@ -71,7 +73,7 @@ print(lista_sciez_podn)
 print(najmniejsze_listy)
 print(nowa_lista)
 print(nowa_lista_v2)
-print(sum_list)
+#print(sum_list)
 print(index_list)
 
 print("optymalne sciezki to: ")
