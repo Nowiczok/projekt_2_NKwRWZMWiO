@@ -40,7 +40,10 @@ def convert_lines_to_graph(neighborhood_list_lines):
         [key, values_together_podnuze] = line.split(":")
         [values_together, podnuze] = values_together_podnuze.split(";")
         values = values_together.split(",")
-        graph[key] = values
+        if values == [""]:
+            graph[key] = []
+        else:
+            graph[key] = values
         if podnuze != "":
             podnuze_list.append(key)
     return graph, podnuze_list
