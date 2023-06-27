@@ -1,5 +1,5 @@
 import graph_parser
-graph, podnoza_list, stars = graph_parser.get_graph("input.txt")
+import argparse
 
 
 
@@ -30,8 +30,15 @@ def depthFirst(graph, currentVertex, visited):
                     visitedList.append(visited) #dodajemy element
                     stars_count = sum([stars.get(vertex,vertex) for vertex in visited])
 
-              
-depthFirst(graph, "szczyt" , [])
 
-print("Optymalna sciezka to: ")
-print(visitedList)
+if __name__ == "__main__":
+    # Parsing script arguments (path to file with data)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file", type=argparse.FileType("r"))
+    args = parser.parse_args()
+    graph, podnoza_list, stars = graph_parser.get_graph(args.file.name)
+
+    depthFirst(graph, "szczyt" , [])
+
+    print("Optymalna sciezka to: ")
+    print(visitedList)
