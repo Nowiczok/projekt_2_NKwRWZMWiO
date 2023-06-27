@@ -27,54 +27,54 @@ graph, podnuza_list, stars = graph_parser.get_graph("input.txt")
 #     9: [3],
 # }
 
-visitedList = []  # Usunięcie [[]] - niepotrzebnej pustej listy
+visitedList = []  
 
-def indeksy_najwiekszych_elementow(lista):
-    najwieksze = max(lista)
-    indeksy = [i for i, x in enumerate(lista) if x == najwieksze]
-    return indeksy
+def indeksy_najwiekszych_elementow(list):
+    biggest = max(list)
+    indices = [i for i, x in enumerate(list) if x == biggest]
+    return indices
 
-def drukuj_elementy_po_indeksach(lista, indeksy):
-    for indeks in indeksy:
-        print(lista[indeks])
+def print_items_by_index(list, indices):
+    for indeks in indices:
+        print(list[indeks])
 
 def depthFirst(graph, currentVertex, visited):
     visited.append(currentVertex)
     for vertex in graph[currentVertex]:
         if vertex not in visited:
-            depthFirst(graph, vertex, visited.copy())  # Używanie visited.copy()
+            depthFirst(graph, vertex, visited.copy()) 
     visitedList.append(visited)
 
 depthFirst(graph, "szczyt" , [])
 
 
-lista_sciez_podn = []
+list_sciez_podn = []
 
 for list_i in visitedList:
     if list_i[-1] in podnuza_list:
-        lista_sciez_podn.append(list_i)
+        list_sciez_podn.append(list_i)
 
 
 
-najmniejsza_dlugosc = min(len(element) for element in lista_sciez_podn)
-najmniejsze_listy = [element for element in lista_sciez_podn if len(element) == najmniejsza_dlugosc]
+smallest_length = min(len(element) for element in list_sciez_podn)
+smallest_lists = [element for element in list_sciez_podn if len(element) == smallest_length]
 
-nowa_lista = [[stars.get(vertex, vertex) for vertex in element] for element in najmniejsze_listy]
+new_list = [[stars.get(vertex, vertex) for vertex in element] for element in smallest_lists]
 
-nowa_lista_v2 = [sum(sublist) for sublist in nowa_lista]
+new_list_v2 = [sum(sublist) for sublist in new_list]
 
-#sum_list = [sum(sublist) for sublist in nowa_lista_v2]
+#sum_list = [sum(sublist) for sublist in new_list_v2]
 
-index_list = indeksy_najwiekszych_elementow(nowa_lista_v2)
+index_list = indeksy_najwiekszych_elementow(new_list_v2)
 
 
 print(visitedList)
-print(lista_sciez_podn)
-print(najmniejsze_listy)
-print(nowa_lista)
-print(nowa_lista_v2)
+print(list_sciez_podn)
+print(smallest_lists)
+print(new_list)
+print(new_list_v2)
 #print(sum_list)
 print(index_list)
 
 print("optymalne sciezki to: ")
-drukuj_elementy_po_indeksach(najmniejsze_listy, index_list)
+print_items_by_index(smallest_lists, index_list)
