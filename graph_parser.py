@@ -35,18 +35,18 @@ def extract_neighborhood_list(lines):
 
 def convert_lines_to_graph(neighborhood_list_lines):
     graph = {}
-    podnuze_list = []
+    podnoze_list = []
     for line in neighborhood_list_lines:
-        [key, values_together_podnuze] = line.split(":")
-        [values_together, podnuze] = values_together_podnuze.split(";")
+        [key, values_together_podnoze] = line.split(":")
+        [values_together, podnoze] = values_together_podnoze.split(";")
         values = values_together.split(",")
         if values == [""]:
             graph[key] = []
         else:
             graph[key] = values
-        if podnuze != "":
-            podnuze_list.append(key)
-    return graph, podnuze_list
+        if podnoze != "":
+            podnoze_list.append(key)
+    return graph, podnoze_list
 
 
 def extract_stars_list(lines, start_line):
@@ -74,8 +74,8 @@ def get_graph(path):
     lines = remove_empty_lines(lines)
 
     neighborhood_list_lines, end_line_nbr = extract_neighborhood_list(lines)
-    graph, podnuze_list = convert_lines_to_graph(neighborhood_list_lines)
+    graph, podnoze_list = convert_lines_to_graph(neighborhood_list_lines)
 
     stars_list_lines, end_line_nbr = extract_stars_list(lines, end_line_nbr)
     stars_list = conver_lines_to_stars_list(stars_list_lines)
-    return graph, podnuze_list, stars_list
+    return graph, podnoze_list, stars_list

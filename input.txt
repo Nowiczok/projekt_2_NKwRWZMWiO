@@ -5,13 +5,13 @@
     szczyt: 1, 4, 6;
     1: 2;
     2: 3, 9;
-    3: ; podnuze
-    9: ; podnuze
+    3: ; podnoze
+    9: ; podnoze
     4: 5;
-    5: ; podnuze
+    5: ; podnoze
     6: 8, 7;
     8: ;
-    7: ; podnuze
+    7: ; podnoze
 }
 
 // gwiazdki
