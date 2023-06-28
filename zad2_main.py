@@ -37,7 +37,8 @@ if __name__ == "__main__":
     parser.add_argument("file", type=argparse.FileType("r"))
     args = parser.parse_args()
     graph, podnoza_list, stars = graph_parser.get_graph(args.file.name)
-
+    stars["szczyt"] = 0 #dodanie szczytu o wartosci gwiazdki 0 w celu poprawnego dzialania algorytmu
+    
     depthFirst(graph, "szczyt" , [])
 
     print("Optymalna sciezka to: ")
