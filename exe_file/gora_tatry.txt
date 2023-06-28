@@ -1,0 +1,37 @@
+
+
+// lista sasiedztwa
+{
+    szczyt: krzyz_giewont, kasprowy, bacowka;
+    krzyz_giewont: jaszczurowka;
+    jaszczurowka: ludzimierz,krzeptowki;
+    ludzimierz: ;
+    krzeptowki: ksiezowka;
+    ksiezowka: ; podnoze
+    kasprowy: wielka_krokiew;
+    wielka_krokiew: krupowki,termy;
+    krupowki: ; podnoze
+    termy: ;  podnoze
+    bacowka: hala_krupowa, morskie_oko;
+    hala_krupowa: palace;
+    morskie_oko: ;
+    palace: ; podnoze
+    
+}
+
+// gwiazdki
+{
+    krzyz_giewont: 2
+    jaszczurowka: 3
+    ludzimierz: 3
+    krzeptowki: 5
+    ksiezowka: 3
+    kasprowy: 4
+    wielka_krokiew: 3 
+    krupowki: 2
+    termy: 5
+    bacowka: 1
+    hala_krupowa: 4 
+    morskie_oko: 5
+    palace: 3
+}
